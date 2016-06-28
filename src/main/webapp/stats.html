@@ -1,0 +1,155 @@
+<html>
+<head>
+    <title>My first chart using FusionCharts Suite XT</title>
+    <script type="text/javascript" src="scripts/fusioncharts.js"></script>
+    <script type="text/javascript" src="scripts/fusioncharts.theme.fint.js"></script>
+
+    <script type="text/javascript">
+       /* FusionCharts.ready(function(){
+            var revenueChart = new FusionCharts({
+                "type": "column2d",
+                "renderAt": "chartContainer",
+                "width": "500",
+                "height": "300",
+                "dataFormat": "json",
+                "dataSource":  {
+                    "chart": {
+                        "caption": "Expeditioner per manad",
+                        "theme": "fint"
+                    },
+                    "data": [
+                        {
+                            "label": "Jan",
+                            "value": "480000"
+                        },
+                        {
+                            "label": "Feb",
+                            "value": "810000"
+                        },
+                        {
+                            "label": "Mar",
+                            "value": "720000"
+                        },
+                        {
+                            "label": "Apr",
+                            "value": "550000"
+                        },
+                        {
+                            "label": "Maj",
+                            "value": "910000"
+                        },
+                        {
+                            "label": "Jun",
+                            "value": "510000"
+                        },
+                        {
+                            "label": "Jul",
+                            "value": "680000"
+                        },
+                        {
+                            "label": "Aug",
+                            "value": "620000"
+                        },
+                        {
+                            "label": "Sep",
+                            "value": "610000"
+                        },
+                        {
+                            "label": "Okt",
+                            "value": "490000"
+                        },
+                        {
+                            "label": "Nov",
+                            "value": "900000"
+                        },
+                        {
+                            "label": "Dec",
+                            "value": "730000"
+                        }
+                    ]
+                }
+
+            });
+            revenueChart.render();
+        })*/
+
+        FusionCharts.ready(function () {
+            var csatGauge = new FusionCharts({
+                "caption": "Responstider (ms)",
+                "subcaption": "Senaste veckan",
+                "type": "angulargauge",
+                "renderAt": "chart-container",
+                "width": "400",
+                "height": "250",
+                "dataStreamURL": "http://localhost:8080/responsetime/week",
+                "refreshInterval": "2",
+                "updateInterval": "5",
+                "dataFormat": "json",
+                "dataSource": {
+                    "chart": {
+                        "caption": "Responstider (ms)",
+                        "lowerLimit": "0",
+                        "upperLimit": "50000",
+                        "theme": "fint"
+                    },
+                    "colorRange": {
+                        "color": [
+                            {
+                                "minValue": "0",
+                                "maxValue": "5000",
+                                "code": "#d5d5c3"
+                            },
+                            {
+                                "minValue": "5000",
+                                "maxValue": "30000",
+                                "code": "#6baa01"
+                            },
+                            {
+                                "minValue": "30000",
+                                "maxValue": "45000",
+                                "code": "#f8bd19"
+                            },
+                            {
+                                "minValue": "45000",
+                                "maxValue": "50000",
+                                "code": "#e44a00"
+                            }
+                        ]
+                    },
+                    "dials": {
+                        "dial": [
+                            {
+                                "id" : "1",
+                                "value": "15000"
+                            }
+                        ]
+                    }
+                }
+            });
+
+            csatGauge.render();
+        });
+    </script>
+
+</head>
+<body>
+<table cellpadding="0" cellspacing="0" style="width:100%;height:100%">
+    <tr>
+        <td valign="middle" align="center">
+
+            <span><div id="chartContainer"></div>
+                <div id="chart-container">An angular guage will load here!</div></span>
+
+            <div style="height: 20px">&nbsp;</div>
+
+            <table cellspacing="10px">
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

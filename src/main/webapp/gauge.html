@@ -1,0 +1,55 @@
+<html>
+<head>
+    <title>Statistics</title>
+    <script type="text/javascript" src="scripts/fusioncharts.js"></script>
+    <script type="text/javascript" src="scripts/fusioncharts.theme.fint.js"></script>
+    <script type="text/javascript">
+        FusionCharts.ready(function(){
+            var weekchart = new FusionCharts({
+                        type: 'angulargauge',
+                        renderAt: 'week-chart-container',
+                        id: 'week-angular-gauge',
+                        width: '400',
+                        height: '300',
+                        dataSource: {
+                            "chart": {
+                                "caption": "Responstider (ms)",
+                                "subcaption": "Senaste veckan",
+                                "lowerLimit": "0",
+                                "upperLimit": "60000",
+                                "numberSuffix": " ms",
+                                "dataStreamUrl": "http://localhost:8080/responsetime/week",
+                                "refreshInterval": "5"
+                            },
+                            "colorRange": {
+                                "color": [{
+                                    "minValue": "0",
+                                    "maxValue": "10000",
+                                    "code": "#6baa01"
+                                }, {
+                                    "minValue": "10000",
+                                    "maxValue": "30000",
+                                    "code": "#f8bd19"
+                                }, {
+                                    "minValue": "30000",
+                                    "maxValue": "60000",
+                                    "code": "#e44a00"
+                                }]
+                            },
+                            "dials": {
+                                "dial": [{
+                                    "id": "fd_dial",
+                                    "value": "72.5"
+                                }]
+                            }
+                        }
+                    }
+            );
+            weekchart.render();
+        });
+    </script>
+</head>
+<body>
+<div id="week-chart-container">FusionCharts XT will load here!</div>
+</body>
+</html>
